@@ -1,6 +1,6 @@
-#include "input.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "funciones.h"
 
 #define BITCOIN 4606954.55
 
@@ -117,8 +117,8 @@ float calcularDiferencia(float y,float z)
 	return diferencia;
 }
 /*Realiza la carga forzada de datos utilizando las funciones
-para calcular los medios de pago asignandoles el valor e imprimiendo los calculos en pantalla*/
-void cargaForzada(void)
+para calcular los medios de pago pasando por referencia su valor e imprimiendo los calculos en pantalla*/
+void cargaForzada(int km, float y, float z)
 {
 	float debitoAerolineas;
 	float creditoAerolineas;
@@ -129,9 +129,7 @@ void cargaForzada(void)
 	float bitcoinLatam;
 	float precioUnitarioLatam;
 	float diferenciaPrecio;
-	float y = 162965;
-	float z = 159339;
-	int km = 7090;
+
 
 	debitoAerolineas = precioTarjetaDebito(y);
 	creditoAerolineas = precioTarjetaCredito(y);

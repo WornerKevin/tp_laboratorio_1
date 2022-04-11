@@ -1,5 +1,5 @@
-#ifndef INPUT_H_
-#define INPUT_H_
+#ifndef FUNCIONES_H_
+#define FUNCIONES_H_
 
 void MostrarSeparador(void);
 
@@ -21,5 +21,5 @@ float precioUnitario(float precio, int km);
 
 float calcularDiferencia(float y,float z);
 
-void cargaForzada(void);
-#endif /* INPUT_H_ */
+void cargaForzada(int km, float y, float z);
+#endif /* FUNCIONES_H_ */
