@@ -1,6 +1,6 @@
+//Kevin Worner 1A
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "funciones.h"//Realiza el llamado a la biblioteca de Funciones
 
 
@@ -58,16 +58,16 @@ int main(void)
 					printf("\nIngrese el precio de Latam: ");
 					z = tomarPrecio();
 					MostrarSeparador();
-					flagMenu1 = 2;
 				}
 				else
 				{
-					printf("\nError. Debe ingresar los Kilometros primero (actualmente %d) .\n", km);
+					printf("\n\tERROR:\n\tDebe ingresar los Kilometros primero (actualmente %d) .\n", km);
+					MostrarSeparador();
 				}
 			break;
 
 			case 3:
-				if(flagMenu1 == 2)
+				if(z > 0 && y > 0)
 				{
 					debitoAerolineas = precioTarjetaDebito(y);
 					creditoAerolineas = precioTarjetaCredito(y);
@@ -78,16 +78,19 @@ int main(void)
 					bitcoinLatam = precioBitcoin(z);
 					precioUnitarioLatam = precioUnitario(z, km);
 					diferenciaPrecio = calcularDiferencia(y, z);
-					flagMenu1=3;
+					printf("\nSE CALCULO EXITOSAMENTE.\n");
+					MostrarSeparador();
+					flagMenu1=2;
 				}
 				else
 				{
-					printf("\nError. Debe ingresar los precios primero .\n");
+					printf("\n\tERROR:\n\tDebe ingresar los precios primero (actualmente : %.2f - %.2f)\n", y, z);
+					MostrarSeparador();
 				}
 			break;
 
 			case 4:
-				if(flagMenu1 == 3)
+				if(flagMenu1 == 2)
 				{
 					printf("Kilometros Ingresados: %d\n",km);
 					printf("\nPRECIO AEROLINEAS: %.2f\n"
@@ -106,7 +109,8 @@ int main(void)
 				}
 				else
 				{
-					printf("\nError. Debe calcular primero .\n");
+					printf("\n\tERROR:\n\t Debe calcular primero .\n");
+					MostrarSeparador();
 				}
 				break;
 

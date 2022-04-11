@@ -1,3 +1,4 @@
+//Kevin Worner 1A
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones.h"
@@ -7,7 +8,7 @@
 //Muestra un separador
 void MostrarSeparador(void)
 {
-	printf("--------------------------------------\n");
+	printf("-------------------------------------------------------------\n");
 }
 //Funcion que muestra el menu de opciones.
 void mostrarMenu(int km, float y, float z)
