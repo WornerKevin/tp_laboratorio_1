@@ -2,6 +2,12 @@
 #ifndef FUNCIONES_H_
 #define FUNCIONES_H_
 
+/**
+ * @brief Funcion que ejecuta  el menu
+ *
+ */
+void Menu(void);
+
 
 /** \brief esta funcion sirve para generar un separador.
  *\void
@@ -30,10 +36,13 @@ int tomarOpcion(void);
  */
 int pedirKm(void);
 
-/** \brief pide el precio al usuario, los valida y los retorna.
- *\return float retorna el precio.
+/**
+ * @brief con un mensaje que pasa por parametro se le dice al usuario que ingrese los precios
+ *  se los valida y se retorna el valor ingresado.
+ * @param mensaje se le pasa por parametro el mensaje que se le mostrara al usuario
+ * @return retorna el precio ingresado.
  */
-float tomarPrecio(void);
+float tomarPrecio(char mensaje[]);
 
 
 /** \brief calcula el descuento que realiza con tarjeta de debito.
@@ -91,5 +100,45 @@ float calcularDiferencia(float y,float z);
  * \void
  *
  */
-void cargaForzada(int km, float y, float z);
+void cargaForzada(int* km, float* y, float* z);
+
+
+/**
+ * @brief funcion que carga los resultados pasando las variables de los kilometros, precio
+ * y por puntero las variables de los calculos del main
+ *
+ * @param km toma los kilometros enteros
+ * @param y toma el precio ingresado de Aerolineas
+ * @param z toma el precio ingresado de Latam
+ * @param debA puntero que calcula y modifica la variable de debito Aerolineas del main
+ * @param debL puntero que calcula y modifica la variable de debito Latam del main
+ * @param credA puntero que calcula y modifica la variable de credito Aerolineas del main
+ * @param credL puntero que calcula y modifica la variable de credito Latam del main
+ * @param bitA puntero que calcula y modifica la variable de bitcoins Aerolineas del main
+ * @param bitL puntero que calcula y modifica la variable de bitcoins Latam del main
+ * @param preA  puntero que calcula y modifica la variable de precio unitario de Aerolineas del main
+ * @param preL puntero que calcula y modifica la variable de precio unitario de Latam del main
+ * @param dif puntero que calcula y modifica la variable de diferencia de precio del main
+ */
+void cargarResultados( int km ,float  y,float z, float* debA, float* debL, float* credA, float* credL, float* bitA, float* bitL, float* preA, float* preL, float* dif );
+
+
+
+/**
+ * @brief funcion que muestra los resultados ya cargados con printf
+ *
+ * @param km toma por parametro los kilometros del main
+ * @param y toma por parametro el precio de Aerolineas del main
+ * @param z toma por parametro el precio de Latam del main
+ * @param debA toma por parametro los calculos de debito Aerolineas
+ * @param debL toma por parametro los calculos de debito Latam
+ * @param credA toma por parametro los calculos de credito Aerolineas
+ * @param credL toma por parametro los calculos de credito Latam
+ * @param bitA toma por parametro los calculos de bitcoin Aerolineas
+ * @param bitL toma por parametro los calculos de bitcoin Latam
+ * @param preA toma por parametro los calculos de precio unitario Aerolineas
+ * @param preL toma por parametro los calculos de precio unitario Latam
+ * @param dif toma por parametro los calculos de la diferencia de precio
+ */
+void MostrarResultados( int km ,float  y,float z, float debA, float debL, float credA, float credL, float bitA, float bitL, float preA, float preL, float dif );
 #endif /* FUNCIONES_H_ */

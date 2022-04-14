@@ -41,9 +41,9 @@ int pedirKm(void)
 	int numero;
 	printf("\nIngrese los km: ");
 	scanf("%d", &numero);
-	while(numero < 50 || numero > 25000)
+	while(numero < 100 || numero > 22000)
 	{
-		printf("\nError. Ingrese km validos (50 - 25000) : ");
+		printf("\nError. Ingrese km validos (100 - 22000) : ");
 		fflush(stdin);
 		scanf("%d", &numero);
 	}
@@ -51,9 +51,10 @@ int pedirKm(void)
 
 }
 //Toma el precio que ingresa el usuario y lo valida.
-float tomarPrecio(void)
+float tomarPrecio(char mensaje[])
 {
 	float precio;
+	printf("%s", mensaje);
 	scanf("%f", &precio);
 	fflush(stdin);
 	while(precio < 10000 || precio > 2000000)
@@ -117,43 +118,51 @@ float calcularDiferencia(float y,float z)
 			}
 	return diferencia;
 }
-/*Realiza la carga forzada de datos utilizando las funciones
-para calcular los medios de pago pasando por referencia su valor e imprimiendo los calculos en pantalla*/
-void cargaForzada(int km, float y, float z)
+
+
+//Realiza la carga forzada de datos utilizando punteros
+void cargaForzada(int* km, float* y, float* z)
 {
-	float debitoAerolineas;
-	float creditoAerolineas;
-	float bitcoinAerolineas;
-	float precioUnitarioAerolineas;
-	float debitoLatam;
-	float creditoLatam;
-	float bitcoinLatam;
-	float precioUnitarioLatam;
-	float diferenciaPrecio;
+	*km = 7090;
+	*y = 162965;
+	*z = 159339;
+
+}
 
 
-	debitoAerolineas = precioTarjetaDebito(y);
-	creditoAerolineas = precioTarjetaCredito(y);
-	bitcoinAerolineas = precioBitcoin(y);
-	precioUnitarioAerolineas = precioUnitario(y, km);
-	debitoLatam = precioTarjetaDebito(z);
-	creditoLatam = precioTarjetaCredito(z);
-	bitcoinLatam = precioBitcoin(z);
-	precioUnitarioLatam = precioUnitario(z, km);
-	diferenciaPrecio = calcularDiferencia(y, z);
+//Carga los resultados tomando por parametro las variables del main y pasando a puntero las variables de calculos.
+void cargarResultados(int km ,float y,float z, float* debA, float* debL, float* credA, float* credL, float* bitA, float* bitL, float* preA, float* preL, float* dif )
+{
 
+	if(km > 0 && y > 0 && z > 0)
+	{
+		*debA = precioTarjetaDebito(y);
+		*credA = precioTarjetaCredito(y);
+		*bitA = precioBitcoin(y);
+		*preA = precioUnitario(y, km);
+		*debL = precioTarjetaDebito(z);
+		*credL = precioTarjetaCredito(z);
+		*bitL = precioBitcoin(z);
+		*preL = precioUnitario(z, km);
+		*dif = calcularDiferencia(y, z);
+	}
+
+}
+
+
+//muestra los resultados tomando por parametro las variables del main
+void MostrarResultados(int km ,float y,float z, float debA, float debL, float credA, float credL, float bitA, float bitL, float preA, float preL, float dif)
+{
 	printf("Kilometros Ingresados: %d\n",km);
 	printf("\nPRECIO AEROLINEAS: %.2f\n"
-			"\ta)-Precio con tarjeta de debito: $%.2f\n"
-			"\tb)-Precio con tarjeta de credito: $%.2f\n"
-			"\tc)-Precio pagando con Bitcoin: %f\n"
-			"\td)-Precio Unitario: $%.2f\n", y, debitoAerolineas, creditoAerolineas, bitcoinAerolineas, precioUnitarioAerolineas);
-	printf("\nPRECIO LATAM: %.2f\n"
-			"\ta)-Precio con tarjeta de debito: $%.2f\n"
-			"\tb)-Precio con tarjeta de credito: $%.2f\n"
-			"\tc)-Precio pagando con Bitcoin: %f\n"
-			"\td)-Precio Unitario: $%.2f\n", z, debitoLatam, creditoLatam, bitcoinLatam, precioUnitarioLatam);
-	printf("\nLa diferencia de precio es: $%.2f\n", diferenciaPrecio);
-	MostrarSeparador();
-	system("pause");
+							"\ta)-Precio con tarjeta de debito: $%.2f\n"
+							"\tb)-Precio con tarjeta de credito: $%.2f\n"
+							"\tc)-Precio pagando con Bitcoin: BTC %.6f\n"
+							"\td)-Precio Unitario: $%.2f\n", y, debA, credA, bitA, preA);
+						printf("\nPRECIO LATAM: %.2f\n"
+							"\ta)-Precio con tarjeta de debito: $%.2f\n"
+							"\tb)-Precio con tarjeta de credito: $%.2f\n"
+							"\tc)-Precio pagando con Bitcoin: BTC %.6f\n"
+							"\td)-Precio Unitario: $%.2f\n", z, debL, credL, bitL, preL);
+						printf("\nLa diferencia de precio es: $%.2f\n", dif);
 }
