@@ -71,8 +71,13 @@ int main()
                         printf("\nNo hay pasajeros cargados.\n");
                     }
             break;
+            case 5:
+                hardcode(pasajero, TAMLIST, &id, &contadorPasajeros);
+                printf("\nPASAJEROS CARGADOS CORRECTAMENTE\n");
+                printPassenger(pasajero, TAMLIST);
+                break;
         }
-    }while(opcion != 5);
+    }while(opcion != 6);
     printf("\n\tSALISTE EXITOSAMENTE DEL PROGRAMA");
     return 0;
 }

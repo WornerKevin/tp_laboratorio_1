@@ -28,10 +28,11 @@ int menu(int* respuesta)
 		printf("2-MODIFICAR\n");
 		printf("3-BAJA\n");
 		printf("4-INFORMAR\n");
-		printf("5-Salir\n");
+		printf("5-ALTA FORZADA DE PASAJEROS\n");
+		printf("6-SALIR\n");
 		printf("Ingrese una opcion: ");
 		r = scanf("%d", respuesta);
-		while(r==0 || *respuesta > 5)
+		while(r==0 || *respuesta > 6)
 		{
 			printf("Error, reingrese una opcion valida: ");
 			fflush(stdin);

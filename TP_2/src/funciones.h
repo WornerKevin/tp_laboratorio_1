@@ -19,5 +19,15 @@
  */
 int submenu(Passenger* list,int tamList, int respuesta);
 
+/**
+ * @brief Realiza la carga forzada de pasajeros
+ *
+ * @param list puntero al array de pasajeros
+ * @param tamList tamaño del array
+ * @param id puntero al id del pasajero
+ * @param contador puntero al contador de pasajeros
+ * @return retorna -1 si hubo un error y 0 si se ejecuto Ok
+ */
+int hardcode(Passenger* list, int tamList, int* id, int* contador);
 
 #endif /* FUNCIONES_H_ */
