@@ -226,8 +226,8 @@ int mostrarPasajero(Passenger* list, int tamList, int id)
 	                        case 1:
 	                            strcpy(estado, "ACTIVO");
 	                        break;
-	                        case 0:
-	                            strcpy(estado, "CANCELADO");
+	                        case 2:
+	                            strcpy(estado, "REPROGRAMADO");
 	                        break;
 	                    }
 	                printf("ID\t|   Name \t|   Last Name  \t|   Price   \t|  Fly Code \t|   Type Passenger  \t| Status Flight |\n");
